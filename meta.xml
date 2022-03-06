@@ -1,0 +1,5 @@
+<meta>
+    <script src="src/transformation.lua" type="server"/>
+    <script src="src/reversing.lua" type="server"/>
+    <script src="src/basic_funcs.lua" type="server"/>
+</meta>
