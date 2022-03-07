@@ -1,9 +1,6 @@
 function capitalize(instring)
-    local instring_table = to_array(instring)
-    instring_table[1] = string.upper(instring_table[1])
-    local capitalized_str = from_array(instring_table)
-    return capitalized_str
-end 
+    return (str:gsub("^%l", string.upper))
+end
 
 function count(instring, inelement)
     local chars = string.gmatch(instring, inelement)
