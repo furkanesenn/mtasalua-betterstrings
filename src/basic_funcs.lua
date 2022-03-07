@@ -29,11 +29,7 @@ end
 
 function slice(initerable, startIndex, endIndex)
     if type(initerable) == 'string' then initerable = to_array(initerable) end 
-    local sliced = {}
-    for i = startIndex or 1, endIndex or #initerable do 
-        sliced[#sliced + 1] = initerable[i]
-    end 
-    return sliced
+    return {table.unpack(initerable, startIndex or 1,endIndex or #initerable)} 
 end 
 
 function isalnum(instring)
