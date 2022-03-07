@@ -98,3 +98,42 @@ function title(instring)
     end 
     return table.concat(words, ' ')
 end 
+
+function any(inarray)
+    return indexOf(inarray, 'true') 
+end 
+
+function all(inarray)
+    return count(inarray, 'true') == #inarray 
+end 
+
+function filter(func, initerable)
+    if type(initerable) == 'string' then initerable = to_array(initerable) end
+    local returned = {} 
+    for _,v in pairs(initerable) do 
+        if func(v) == true then table.insert(returned, v) end
+    end 
+    return returned; 
+end 
+
+function tableExpand(firstarray, secondarray)
+    z = {}
+    n = 0
+    for _,v in ipairs(firstarray) do n=n+1; z[n]=v end
+    for _,v in ipairs(secondarray) do n=n+1; z[n]=v end
+    return z
+end 
+
+function zip(...)
+    local arrays, ans = {...}, {}
+    local index = 0
+    return
+    function()
+        index = index + 1
+        for i,t in ipairs(arrays) do
+            if type(t) == 'function' then ans[i] = t() else ans[i] = t[index] end
+            if ans[i] == nil then return end
+        end
+        return unpack(ans)
+    end
+end
